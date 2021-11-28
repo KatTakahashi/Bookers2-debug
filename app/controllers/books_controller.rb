@@ -1,9 +1,9 @@
 class BooksController < ApplicationController
 
   def show
-    @books = Book.find(params[:id])    #22.debug.@bookを@booksに書き換え
-    @book = Book.new                   #22.debug:追加
-    @user = @books.user                #20.debug:追加
+    @book = Book.find(params[:id])    
+    @book_new = Book.new              #22.debug:追加
+    @user = @book.user                #20.debug:追加
   end
 
   def index
