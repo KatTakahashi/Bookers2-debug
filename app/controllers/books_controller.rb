@@ -1,11 +1,14 @@
 class BooksController < ApplicationController
 
   def show
-    @book = Book.find(params[:id])
+    @books = Book.find(params[:id])    #22.debug.@bookを@booksに書き換え
+    @book = Book.new                   #22.debug:追加
+    @user = @books.user                #20.debug:追加
   end
 
   def index
     @books = Book.all
+    @book = Book.new #17.debug:追加
   end
 
   def create
@@ -21,6 +24,11 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user == current_user   #28.debug:追加
+      render :edit                  #28.debug:追加
+    else                            #28.debug:追加
+      redirect_to books_path        #28.debug:追加
+    end                             #28.debug:追加
   end
 
 
@@ -34,16 +42,16 @@ class BooksController < ApplicationController
     end
   end
 
-  def delete
+  def destroy #23.debug:deleteをdestroyに書き換え
     @book = Book.find(params[:id])
-    @book.destoy
+    @book.destroy
     redirect_to books_path
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title)
+    params.require(:book).permit(:title, :body) #11?.debug::body追加
   end
 
 end
