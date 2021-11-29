@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :books #9.debug:belongs_to を has_manyに書き換え
+  has_many :books, dependent: :destroy #9.debug:belongs_to を has_manyに書き換え
+  has_many :favorites, dependent: :destroy
   attachment :profile_image, destroy: false
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
