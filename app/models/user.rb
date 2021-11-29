@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :books, dependent: :destroy #9.debug:belongs_to を has_manyに書き換え
   has_many :favorites, dependent: :destroy
   attachment :profile_image, destroy: false
+  has_many :book_comments, dependent: :destroy
 
   validates :name, length: {maximum: 20, minimum: 2}, uniqueness: true
   validates :introduction, length: {maximum:50} #24.debug:追加

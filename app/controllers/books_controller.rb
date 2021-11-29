@@ -1,8 +1,9 @@
 class BooksController < ApplicationController
 
   def show
-    @book = Book.find(params[:id])    
+    @book = Book.find(params[:id])
     @book_new = Book.new              #22.debug:追加
+    @book_comment = BookComment.new
     @user = @book.user                #20.debug:追加
   end
 
