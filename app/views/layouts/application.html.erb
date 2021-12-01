@@ -10,9 +10,11 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
-    <div class="search">
-      <%= render 'searches/form' %>
-    </div>
+    <% if user_signed_in? %>
+      <div class="search">
+        <%= render 'searches/form' %>
+      </div>
+    <% end %>
       <main>
         <p id="notice"><%= notice %></p>
         <%= yield %> <!-- 5.debug:追加 -->
