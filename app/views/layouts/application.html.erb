@@ -10,6 +10,9 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <div class="search">
+      <%= render 'searches/form' %>
+    </div>
       <main>
         <p id="notice"><%= notice %></p>
         <%= yield %> <!-- 5.debug:追加 -->
